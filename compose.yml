@@ -6,7 +6,10 @@ services:
     container_name: gambler
     volumes:
       - ./gambler:/app/shared
-      - ./data:/app/data
+      - gambler_data:/app/data
     env_file:
       - .env
 
+volumes:
+  gambler_data:
+    external: true
