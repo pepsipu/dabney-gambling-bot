@@ -14,7 +14,7 @@ from telegram.ext import (
 
 load_dotenv()
 
-db = pw.SqliteDatabase("data/data.db")
+db = pw.SqliteDatabase("/app/data/data.db")
 
 
 class User(pw.Model):
@@ -41,9 +41,9 @@ db.create_tables([User, Roll])
 
 BOT_TOKEN = str(os.getenv("TG_TOKEN"))
 
-logging.basicConfig(
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
-)
+# logging.basicConfig(
+#     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
+# )
 
 
 async def fetch_chat_details(bot: Bot, user_id, roll_count):
@@ -52,7 +52,7 @@ async def fetch_chat_details(bot: Bot, user_id, roll_count):
 
 
 def format_leaderboard_entry(index: int, chat: ChatFullInfo, roll_count: int) -> str:
-    return f"{index + 1}. @{chat.username} - {roll_count}"
+    return f"{index + 1}. {chat.username} - {roll_count}"
 
 
 async def handle_leaderboard(

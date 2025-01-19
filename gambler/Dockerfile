@@ -1,4 +1,4 @@
-FROM python:3.13-slim as builder
+FROM python:3.13-slim AS builder
 
 ARG POETRY_VERSION=1.8
 
@@ -17,4 +17,4 @@ WORKDIR /app
 COPY pyproject.toml poetry.lock /app/
 RUN poetry install --no-root
 
-CMD ["poetry", "run", "python", "/app/shared/historian/main.py"]
+CMD ["poetry", "run", "python", "/app/shared/gambler/main.py"]
