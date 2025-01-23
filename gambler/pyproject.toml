@@ -9,7 +9,7 @@ readme = "README.md"
 python = "^3.13"
 python-telegram-bot = "^21.9"
 python-dotenv = "^1.0.1"
-peewee = "^3.17.8"
+sqlitedict = "^2.1.0"
 
 
 [build-system]
