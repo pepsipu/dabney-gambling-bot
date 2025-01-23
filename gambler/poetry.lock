@@ -108,17 +108,6 @@ files = [
 all = ["flake8 (>=7.1.1)", "mypy (>=1.11.2)", "pytest (>=8.3.2)", "ruff (>=0.6.2)"]
 
 [[package]]
-name = "peewee"
-version = "3.17.8"
-description = "a little orm"
-optional = false
-python-versions = "*"
-groups = ["main"]
-files = [
-    {file = "peewee-3.17.8.tar.gz", hash = "sha256:ce1d05db3438830b989a1b9d0d0aa4e7f6134d5f6fd57686eeaa26a3e6485a8c"},
-]
-
-[[package]]
 name = "python-dotenv"
 version = "1.0.1"
 description = "Read key-value pairs from a .env file and set them as environment variables"
@@ -185,4 +174,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.13"
-content-hash = "7bd115cb0200ef9055e6f611656c8fcabd66c87257084532b420ef1384606fa1"
+content-hash = "94d597af03e3bba8b13cacbf83153341e1e02aa8d054edacbc01dd8702bc58e2"
