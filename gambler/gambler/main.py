@@ -27,7 +27,8 @@ users = SqliteDict(DB_PATH)
 
 def format_leaderboard_entry(index: int, id: str) -> str:
     user = users[id]
-    return f"{index + 1}. {user["username"].replace("@", "")} - {user["hits"]}"
+    username = user["username"].replace("@", "") if user["username"] else f"UNK_{id}"
+    return f"{index + 1}. {} - {user["hits"]}"
 
 
 async def handle_leaderboard(
