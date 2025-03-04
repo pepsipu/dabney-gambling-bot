@@ -15,6 +15,7 @@ load_dotenv()
 
 BOT_TOKEN = str(os.getenv("TG_TOKEN"))
 DB_PATH = str(os.getenv("DB_PATH"))
+CHANNEL = str(os.getenv("CHANNEL"))
 
 users = SqliteDict(DB_PATH)
 
@@ -52,6 +53,7 @@ async def handle_leaderboard(
 async def handle_roll(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if (
         not (msg := update.message)
+        or (msg.forward_origin)
         or not (roll := msg.dice)
         or not (author := msg.from_user)
     ):
@@ -59,11 +61,14 @@ async def handle_roll(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
 
     # keep user up to date
     user = users[author.id] if author.id in users else {"hits": 0, "username": None}
-    user["username"] = author.username
+    user["username"] = author.name
 
     if roll.emoji == "🎰" and roll.value == 64:
         user["hits"] += 1
         await msg.reply_text("holy you're cracked", reply_to_message_id=msg.id)
+
+        if msg.chat.id != CHANNEL:
+            await msg.forward(CHANNEL)
 
     users[author.id] = user
     users.commit()
